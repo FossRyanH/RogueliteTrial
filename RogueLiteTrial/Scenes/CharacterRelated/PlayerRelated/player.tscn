@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs7kh8sodwgrb"]
+
+[ext_resource type="PackedScene" uid="uid://bhoswyjsh3aao" path="res://Scenes/CharacterRelated/Shared/character_rig.tscn" id="1_5j4hh"]
+[ext_resource type="Script" uid="uid://cthjvstljelym" path="res://Scripts/Character/PlayerRelated/player.gd" id="1_w0dyp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5j4hh"]
+radius = 3.16228
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5j4hh"]
+radius = 3.0
+height = 22.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_rig")]
+script = ExtResource("1_w0dyp")
+character_rig = NodePath("CharacterRig")
+
+[node name="CharacterRig" parent="." instance=ExtResource("1_5j4hh")]
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5j4hh")
+debug_color = Color(0.924406, 0.274379, 0, 0.42)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_5j4hh")
+debug_color = Color(0, 0.649444, 0.143399, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+process_callback = 0
+position_smoothing_enabled = true
+
+[editable path="CharacterRig"]
