@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbu283iaoulku"]
+
+[ext_resource type="Script" uid="uid://drh6b8vd3w3x0" path="res://Scripts/UserInterface/PlayerInfo.cs" id="1_76kre"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcecv"]
+bg_color = Color(0.345098, 0.345098, 0.345098, 0.666667)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76kre"]
+bg_color = Color(0.391259, 0.692474, 0.184929, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42n2g"]
+bg_color = Color(0.345098, 0.345098, 0.345098, 0.666667)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2rh0"]
+bg_color = Color(0.608937, 0.290833, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[node name="UserInterface" type="CanvasLayer"]
+
+[node name="PlayerInfo" type="Control" parent="." node_paths=PackedStringArray("_healthBar", "_manaBar", "_hpText", "_manaText")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_76kre")
+_healthBar = NodePath("StatsBar/HealthBar")
+_manaBar = NodePath("StatsBar/ManaBar")
+_hpText = NodePath("StatsBar/HealthBar/Label")
+_manaText = NodePath("StatsBar/ManaBar/Label")
+
+[node name="StatsBar" type="VBoxContainer" parent="PlayerInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -33.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerInfo/StatsBar"]
+custom_minimum_size = Vector2(350, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_hcecv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_76kre")
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="PlayerInfo/StatsBar/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 16
+text = "HP Value/MaxHP Value"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ManaBar" type="ProgressBar" parent="PlayerInfo/StatsBar"]
+custom_minimum_size = Vector2(250, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_42n2g")
+theme_override_styles/fill = SubResource("StyleBoxFlat_d2rh0")
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="PlayerInfo/StatsBar/ManaBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 16
+text = "Mana Value / Max Mana"
+horizontal_alignment = 1
+vertical_alignment = 1
