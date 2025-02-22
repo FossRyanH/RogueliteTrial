@@ -1,7 +1,7 @@
 [gd_scene load_steps=45 format=3 uid="uid://bhoswyjsh3aao"]
 
 [ext_resource type="Texture2D" uid="uid://buuggj28ug1j7" path="res://GameArt/SpriteSheets/1_Template_Idle_Down-Sheet.png" id="1_0lsoi"]
-[ext_resource type="Script" uid="uid://r6o51m205fs8" path="res://Scenes/CharacterRelated/Shared/character_rig.gd" id="1_m2tma"]
+[ext_resource type="Script" uid="uid://dktobylm15kjd" path="res://Scripts/Character/Shared/CharacterRig.cs" id="1_m2tma"]
 [ext_resource type="Texture2D" uid="uid://cfc4jdcdj44be" path="res://GameArt/SpriteSheets/Sword/Sword_1_Template_Idle_Down-Sheet.png" id="2_bs1r1"]
 [ext_resource type="Texture2D" uid="uid://bbf47v2l006ac" path="res://GameArt/SpriteSheets/Sword/Sword_1_Template_Idle_Left-Sheet.png" id="3_m2tma"]
 [ext_resource type="Texture2D" uid="uid://d2l5xcdcnnc0a" path="res://GameArt/SpriteSheets/Sword/Sword_1_Template_Idle_Right-Sheet.png" id="4_6c6ob"]
@@ -741,7 +741,7 @@ blend_mode = 1
 animation = &"IdleDown"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6c6ob"]
-animation = &"AttackUp"
+animation = &"IdleUp"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hhl8a"]
 animation = &"IdleRight"
@@ -791,10 +791,10 @@ states/IdleTree/position = Vector2(342, 100)
 states/MoveTree/node = SubResource("AnimationNodeBlendSpace2D_ln8sy")
 states/MoveTree/position = Vector2(478, 100)
 
-[node name="CharacterRig" type="Node2D" node_paths=PackedStringArray("anim_player", "anim_tree")]
+[node name="CharacterRig" type="Node2D" node_paths=PackedStringArray("AnimPlayer", "AnimTree")]
 script = ExtResource("1_m2tma")
-anim_player = NodePath("AnimationPlayer")
-anim_tree = NodePath("AnimationTree")
+AnimPlayer = NodePath("AnimationPlayer")
+AnimTree = NodePath("AnimationTree")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -811,4 +811,4 @@ tree_root = SubResource("AnimationNodeStateMachine_in48g")
 anim_player = NodePath("../AnimationPlayer")
 parameters/AttackTree/blend_position = Vector2(0, 0)
 parameters/IdleTree/blend_position = Vector2(0, 0)
-parameters/MoveTree/blend_position = Vector2(0, 0)
+parameters/MoveTree/blend_position = Vector2(-0.0015949, -0.978022)

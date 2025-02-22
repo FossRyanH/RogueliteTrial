@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://baay5jtq35hb5"]
+
+[ext_resource type="Script" uid="uid://c6xw40t0hp7uc" path="res://Scripts/Singletons/InputManager.cs" id="1_curof"]
+[ext_resource type="Resource" uid="uid://82u52uw666al" path="res://Scripts/Character/PlayerRelated/player_inputs.tres" id="2_3jmht"]
+
+[node name="InputManager" type="Node"]
+script = ExtResource("1_curof")
+_playerInputs = ExtResource("2_3jmht")

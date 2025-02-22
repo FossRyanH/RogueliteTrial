@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs7kh8sodwgrb"]
+[gd_scene load_steps=7 format=3 uid="uid://bs7kh8sodwgrb"]
 
 [ext_resource type="PackedScene" uid="uid://bhoswyjsh3aao" path="res://Scenes/CharacterRelated/Shared/character_rig.tscn" id="1_5j4hh"]
-[ext_resource type="Script" uid="uid://cthjvstljelym" path="res://Scripts/Character/PlayerRelated/player.gd" id="1_w0dyp"]
+[ext_resource type="Script" uid="uid://q8xtvqvygfl7" path="res://Scripts/Character/PlayerRelated/Player.cs" id="1_w0dyp"]
+[ext_resource type="Resource" uid="uid://82u52uw666al" path="res://Scripts/Character/PlayerRelated/player_inputs.tres" id="2_p1jjn"]
+[ext_resource type="PackedScene" uid="uid://br50mur6efr7v" path="res://Scenes/CharacterRelated/PlayerRelated/player_follow_camera.tscn" id="3_4mclg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5j4hh"]
 radius = 3.16228
@@ -10,9 +12,11 @@ radius = 3.16228
 radius = 3.0
 height = 22.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_rig")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerRig") groups=["Players"]]
 script = ExtResource("1_w0dyp")
-character_rig = NodePath("CharacterRig")
+PlayerInputs = ExtResource("2_p1jjn")
+PlayerRig = NodePath("CharacterRig")
+CameraScene = ExtResource("3_4mclg")
 
 [node name="CharacterRig" parent="." instance=ExtResource("1_5j4hh")]
 
@@ -26,10 +30,5 @@ debug_color = Color(0.924406, 0.274379, 0, 0.42)
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_5j4hh")
 debug_color = Color(0, 0.649444, 0.143399, 0.42)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
-process_callback = 0
-position_smoothing_enabled = true
 
 [editable path="CharacterRig"]
